@@ -180,7 +180,7 @@ const Work = () => {
         </div>
       </div>
 
-      <div className=" w-full flex justify-center sm:justify-end mt-36">
+      <div className=" w-full flex justify-center sm:justify-end mt-24">
         <a className="text-md border-b-[1px] border-gray-500" href="#">
           Browse all work
         </a>
