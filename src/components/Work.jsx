@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useState } from "react";
 
 const Work = () => {
@@ -46,29 +47,43 @@ const Work = () => {
         </svg>
         <h1 className="text-sm font-medium">Featured Projects</h1>
       </div>
-      <h1 className="text-[16vw] sm:font-medium mt-6 font-[TWKLausanne]">Work</h1>
+      <h1 className="text-[16vw] sm:font-medium mt-6 font-[TWKLausanne] overflow-hidden w-fit h-fit">
+        <motion.span
+          initial={{ y: "75%", opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ ease: [0, 0.55, 0.45, 1], duration: 1}}
+          viewport={{once: true}}
+          className="inline-block"
+        >
+          Work
+        </motion.span>
+      </h1>
 
-      <p className="mt-6 text-lg block sm:hidden">
+      {/* <p className="mt-6 text-lg block absolute top-0 left-0 w-[100%] h-[100%] object-cover">
         Highlights of cases that we passionately built with forward-thinking
         clients and friends over the years.
-      </p>
+      </p> */}
 
       <div className="sm:flex w-full min-h-screen gap-44">
         {/* left */}
         <div className="left mt-10">
-          <div className="w-full sm:w-[38vw] sm:h-[55vw] h-[104vw]">
-            <img
-              className="w-[100%] h-[100%] object-cover hidden sm:block"
+          <div className="w-full sm:w-[38vw] sm:h-[55vw] h-[104vw] relative">
+            <motion.img
+              whileHover={{zIndex:1}}
+              initial={{zIndex:2}}
+              className="w-[100%] h-[100%] object-cover hidden sm:block sm:absolute sm:top-0 sm:left-0 "
               src={info[0].img}
               alt=""
             />
-            <video
+            <motion.video
+              whileHover={{zIndex:2}}
+              initial={{zIndex:1}}
               autoPlay
               muted
               loop
-              className=" block sm:hidden"
+              className=" block absolute top-0 left-0 w-[100%] h-[100%] object-cover"
               src={info[0].url}
-            ></video>
+            ></motion.video>
           </div>
           <div className="text-sm mt-4">
             <h1 className="text-black font-semibold tracking-wide">
@@ -104,20 +119,24 @@ const Work = () => {
             clients and friends over the years.
           </p>
 
-          <div className="mt-10 sm:mt-48">
-            <div className="w-full h-[104vw] sm:w-[25vw] sm:h-[35vw]">
-              <img
-                className="w-[100%] h-[100%] object-cover hidden sm:block"
+          <div data-scroll data-scroll-speed='0.1' className="mt-10 sm:mt-48">
+            <div  className="w-full h-[104vw] sm:w-[25vw] sm:h-[35vw] relative">
+              <motion.img
+                whileHover={{zIndex:1}}
+                initial={{zIndex:2}}
+                className="w-[100%] h-[100%] object-cover hidden sm:block sm:absolute sm:top-0 sm:left-0"
                 src={info[1].img}
                 alt=""
               />
-              <video
+              <motion.video
+                whileHover={{zIndex:2}}
+                initial={{zIndex:1}}
                 autoPlay
                 muted
                 loop
-                className=" block sm:hidden"
+                className=" block absolute top-0 left-0 w-[100%] h-[100%] object-cover"
                 src={info[1].url}
-              ></video>
+              ></motion.video>
             </div>
             <div className="text-sm mt-4">
               <h1 className="text-black font-semibold tracking-wide">
@@ -130,22 +149,25 @@ const Work = () => {
       </div>
 
       <div className="w-full sm:mt-40 sm:w-[70vw] sm:flex sm:justify-between min-h-screen ">
-
         {/* down left */}
         <div className="left mt-10">
-          <div className="w-full sm:w-[20vw] sm:mt-96 sm:h-[26vw] h-[104vw]">
-            <img
-              className="w-[100%] h-[100%] object-cover hidden sm:block"
+          <div className="w-full sm:w-[20vw] sm:mt-96 sm:h-[26vw] h-[104vw] relative">
+            <motion.img
+              whileHover={{zIndex:1}}
+              initial={{zIndex:2}}
+              className="w-[100%] h-[100%] object-cover hidden sm:block sm:absolute sm:top-0 sm:left-0"
               src={info[2].img}
               alt=""
             />
-            <video
+            <motion.video
+              whileHover={{zIndex:2}}
+              initial={{zIndex:1}}
               autoPlay
               muted
               loop
-              className=" block sm:hidden"
+              className=" block absolute top-0 left-0 w-[100%] h-[100%] object-cover"
               src={info[2].url}
-            ></video>
+            ></motion.video>
           </div>
           <div className="text-sm mt-4">
             <h1 className="text-black font-semibold tracking-wide">
@@ -156,20 +178,24 @@ const Work = () => {
         </div>
 
         {/* down right */}
-        <div className="left mt-10">
-          <div className="w-full sm:w-[34vw] sm:h-[40vw] h-[104vw]">
-            <img
-              className="w-[100%] h-[100%] object-cover hidden sm:block"
+        <div data-scroll data-scroll-speed='0.1' className="left mt-10">
+          <div className="w-full sm:w-[34vw] sm:h-[40vw] h-[104vw] relative">
+            <motion.img
+              whileHover={{zIndex:1}}
+              initial={{zIndex:2}}
+              className="w-[100%] h-[100%] object-cover hidden sm:block sm:absolute sm:top-0 sm:left-0"
               src={info[3].img}
               alt=""
             />
-            <video
+            <motion.video
+              whileHover={{zIndex:2}}
+              initial={{zIndex:1}}
               autoPlay
               muted
               loop
-              className=" block sm:hidden"
+              className=" block absolute top-0 left-0 w-[100%] h-[100%] object-cover"
               src={info[3].url}
-            ></video>
+            ></motion.video>
           </div>
           <div className="text-sm mt-4">
             <h1 className="text-black font-semibold tracking-wide">
@@ -180,7 +206,7 @@ const Work = () => {
         </div>
       </div>
 
-      <div className=" w-full flex justify-center sm:justify-end mt-24">
+      <div data-scroll data-scroll-speed='0.1' className=" w-full flex justify-center sm:justify-end mt-24">
         <a className="text-md border-b-[1px] border-gray-500" href="#">
           Browse all work
         </a>

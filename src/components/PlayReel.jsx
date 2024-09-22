@@ -1,14 +1,55 @@
-import React from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useEffect, useRef } from "react";
 
 const PlayReel = () => {
+  const vid = useRef(null);
+  const vidparent = useRef(null);
+  const play = useRef(null);
+  const reel = useRef(null);
+  const p = useRef(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: vidparent.current,
+        start: "top 0%",
+        end: "top -100%",
+        pin: true,
+        scrub: 1,
+        
+      },
+    })
+    .to(vid.current, {
+      scale:1.2
+    },'a')
+    .to(play.current, {
+      x: "80%",
+    },'a')
+    .to(reel.current, {
+      x: "-80%",
+    },'a');
+  });
+
   return (
-    <div className="relative bg-[#0D0E13] w-full h-screen">
-        <div className="absolute w-[80vw] h-[50vw] sm:w-[60vw] sm:h-[30vw] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-50">
-            <video muted autoPlay loop src="https://player.vimeo.com/progressive_redirect/playback/914803778/rendition/1080p/file.mp4?loc=external&log_user=0&signature=5344c0e4fea63ca54bb433621ca0be7b9470b475583fa68b26de2b6e380a390a"></video>
-        </div>
+    <div ref={vidparent} className="relative bg-[#0D0E13] w-full h-screen">
+      <div
+        ref={vid}
+        className="absolute w-[80vw] h-[50vw] sm:w-[60vw] sm:h-[30vw] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-50"
+      >
+        <video
+          muted
+          autoPlay
+          loop
+          src="https://player.vimeo.com/progressive_redirect/playback/914803778/rendition/1080p/file.mp4?loc=external&log_user=0&signature=5344c0e4fea63ca54bb433621ca0be7b9470b475583fa68b26de2b6e380a390a"
+        ></video>
+      </div>
 
-      <div className="overlay absolute w-[100%] h-[100%] text-white py-28 sm:py-10 flex flex-col items-center justify-between sm:gap-[14vw]">
-
+      <div
+        ref={p}
+        className="overlay absolute w-[100%] h-[100%] text-white py-28 sm:py-10 flex flex-col items-center justify-between sm:gap-[14vw]"
+      >
         <div className="flex w-full gap-1 items-center justify-center">
           <svg
             viewBox="0 0 12 12"
@@ -26,13 +67,15 @@ const PlayReel = () => {
           <h1 className="text-sm font-medium">Work in motion</h1>
         </div>
 
-        <div className="flex gap-24  sm:gap-[50vw] text-6xl sm:text-9xl">
-            <h1>Play</h1>
-            <h1>reel</h1>
+        <div className="flex gap-24 sm:gap-[50vw] text-6xl sm:text-9xl">
+          <h1 ref={play}>Play</h1>
+          <h1 ref={reel}>reel</h1>
         </div>
 
-        <p className="text-center text-md w-[88%] sm:w-[30%]">Our work is best experienced in motion. Don’t forget to put on your headphones.</p>
-
+        <p className="text-center text-md w-[88%] sm:w-[30%]">
+          Our work is best experienced in motion. Don’t forget to put on your
+          headphones.
+        </p>
       </div>
     </div>
   );
